@@ -1,0 +1,83 @@
+{
+  "description": "Example test cases for vision-site - demonstrating OmniParser-style element labeling",
+  "testCases": [
+    {
+      "name": "Landing Page - Hero Section",
+      "page": "/",
+      "elements": [
+        {
+          "id": 1,
+          "tag": "h1",
+          "text": "Welcome to Vision Test Site",
+          "x": 100,
+          "y": 150,
+          "w": 600,
+          "h": 60
+        },
+        {
+          "id": 2,
+          "tag": "button",
+          "text": "Get Started",
+          "className": "primary-btn",
+          "x": 250,
+          "y": 280,
+          "w": 150,
+          "h": 50
+        },
+        {
+          "id": 3,
+          "tag": "button",
+          "text": "Learn More",
+          "className": "secondary-btn",
+          "x": 420,
+          "y": 280,
+          "w": 150,
+          "h": 50
+        }
+      ]
+    },
+    {
+      "name": "Form Page - Input Fields",
+      "page": "/form",
+      "elements": [
+        {
+          "id": 1,
+          "tag": "input",
+          "type": "text",
+          "placeholder": "John",
+          "x": 100,
+          "y": 200,
+          "w": 250,
+          "h": 40
+        },
+        {
+          "id": 2,
+          "tag": "input",
+          "type": "email",
+          "placeholder": "john.doe@example.com",
+          "x": 100,
+          "y": 280,
+          "w": 520,
+          "h": 40
+        },
+        {
+          "id": 3,
+          "tag": "button",
+          "type": "submit",
+          "text": "Create Account",
+          "x": 100,
+          "y": 680,
+          "w": 260,
+          "h": 50
+        }
+      ]
+    }
+  ],
+  "promptExamples": [
+    "What type of element is #2?",
+    "Which element would you click to submit the form?",
+    "Describe what you see at element #1",
+    "List all form input elements and their element numbers",
+    "If you wanted to navigate to the dashboard, which element would you interact with?"
+  ]
+}

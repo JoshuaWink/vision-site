@@ -1,0 +1,21 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Copy package files
+COPY package.json package-lock.json ./
+COPY cdp-bridge/package.json cdp-bridge/package-lock.json ./cdp-bridge/
+
+# Install dependencies
+RUN npm install
+RUN cd cdp-bridge && npm install
+
+# Copy app code
+COPY cdp-bridge/server.js ./cdp-bridge/
+COPY src ./src
+
+# Expose CDP bridge port
+EXPOSE 3001
+
+# Start CDP bridge
+CMD ["npm", "run", "cdp-bridge"]

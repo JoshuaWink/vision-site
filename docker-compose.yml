@@ -1,0 +1,64 @@
+services:
+  # CDP Bridge Service - Proxy for Chrome DevTools Protocol
+  cdp-bridge:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vision-cdp-bridge
+    ports:
+      - "3001:3001"
+    environment:
+      NODE_ENV: production
+      CHROME_HOST: host.docker.internal  # Connect to host machine's Chrome
+      CHROME_PORT: 9222
+      BRIDGE_PORT: 3001
+    restart: unless-stopped
+    networks:
+      - vision-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Optional: Headless Chrome container for isolated browser automation
+  chrome:
+    image: browserless/chrome:latest
+    container_name: vision-chrome
+    ports:
+      - "9222:9222"
+    environment:
+      DEBUG: browserless/*
+      CHROME_DATA_DIR: /data
+    restart: unless-stopped
+    networks:
+      - vision-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9222/json"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    volumes:
+      - chrome-data:/data
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    profiles:
+      - container  # Only start with: docker-compose --profile container up
+
+networks:
+  vision-network:
+    driver: bridge
+
+volumes:
+  chrome-data:
+    driver: local

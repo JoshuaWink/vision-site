@@ -1,0 +1,6 @@
+# Encrypted vault file (contains sensitive data)
+.vault.enc
+
+# Backup files
+*.enc.backup
+*.vault.backup

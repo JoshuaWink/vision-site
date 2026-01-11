@@ -1,0 +1,39 @@
+{
+  "name": "vision-site",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "cdp-bridge": "node cdp-bridge/server.js",
+    "start-edge": "/Applications/Microsoft\\ Edge.app/Contents/MacOS/Microsoft\\ Edge --remote-debugging-port=9222 --user-data-dir=/tmp/edge-cdp &"
+  },
+  "dependencies": {
+    "chrome-remote-interface": "^0.33.3",
+    "commander": "^14.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.22.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.1.0"
+  },
+  "description": "A React-based testing ground for validating visual AI models' ability to identify, navigate, and interact with web interfaces.",
+  "main": "cdp-cli.js",
+  "bin": {
+    "vision-site": "bin/vault.js"
+  },
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

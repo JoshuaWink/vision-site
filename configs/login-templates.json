@@ -1,0 +1,203 @@
+{
+  "gmail": {
+    "name": "Gmail",
+    "url": "https://accounts.google.com/signin",
+    "steps": [
+      {
+        "type": "fill",
+        "selector": "input[type='email']",
+        "value": "${{gmail_email}}",
+        "wait": 1000
+      },
+      {
+        "type": "click",
+        "selector": "#identifierNext",
+        "wait": 2000
+      },
+      {
+        "type": "fill",
+        "selector": "input[type='password']",
+        "value": "${{gmail_password}}",
+        "wait": 1000
+      },
+      {
+        "type": "click",
+        "selector": "#passwordNext",
+        "wait": 3000
+      }
+    ],
+    "success": {
+      "urlContains": "mail.google.com"
+    }
+  },
+  
+  "github": {
+    "name": "GitHub",
+    "url": "https://github.com/login",
+    "fields": {
+      "username": {
+        "selector": "#login_field",
+        "value": "${{github_username}}"
+      },
+      "password": {
+        "selector": "#password",
+        "value": "${{github_password}}"
+      }
+    },
+    "submit": {
+      "selector": "input[type='submit']"
+    },
+    "success": {
+      "urlContains": "github.com",
+      "notContains": "/login"
+    }
+  },
+  
+  "twitter": {
+    "name": "Twitter/X",
+    "url": "https://twitter.com/i/flow/login",
+    "steps": [
+      {
+        "type": "fill",
+        "selector": "input[autocomplete='username']",
+        "value": "${{twitter_username}}",
+        "wait": 1000
+      },
+      {
+        "type": "click",
+        "selector": "div[role='button']:has-text('Next')",
+        "wait": 2000
+      },
+      {
+        "type": "fill",
+        "selector": "input[autocomplete='current-password']",
+        "value": "${{twitter_password}}",
+        "wait": 1000
+      },
+      {
+        "type": "click",
+        "selector": "div[role='button'][data-testid='LoginForm_Login_Button']",
+        "wait": 3000
+      }
+    ],
+    "success": {
+      "urlContains": "twitter.com/home"
+    }
+  },
+  
+  "linkedin": {
+    "name": "LinkedIn",
+    "url": "https://www.linkedin.com/login",
+    "fields": {
+      "username": {
+        "selector": "#username",
+        "value": "${{linkedin_email}}"
+      },
+      "password": {
+        "selector": "#password",
+        "value": "${{linkedin_password}}"
+      }
+    },
+    "submit": {
+      "selector": "button[type='submit']"
+    },
+    "success": {
+      "urlContains": "linkedin.com/feed"
+    }
+  },
+  
+  "facebook": {
+    "name": "Facebook",
+    "url": "https://www.facebook.com/login",
+    "fields": {
+      "email": {
+        "selector": "#email",
+        "value": "${{facebook_email}}"
+      },
+      "password": {
+        "selector": "#pass",
+        "value": "${{facebook_password}}"
+      }
+    },
+    "submit": {
+      "selector": "button[name='login']"
+    },
+    "success": {
+      "urlContains": "facebook.com",
+      "notContains": "/login"
+    }
+  },
+  
+  "instagram": {
+    "name": "Instagram",
+    "url": "https://www.instagram.com/accounts/login/",
+    "fields": {
+      "username": {
+        "selector": "input[name='username']",
+        "value": "${{instagram_username}}"
+      },
+      "password": {
+        "selector": "input[name='password']",
+        "value": "${{instagram_password}}"
+      }
+    },
+    "submit": {
+      "selector": "button[type='submit']"
+    },
+    "success": {
+      "urlContains": "instagram.com",
+      "notContains": "/accounts/login"
+    }
+  },
+  
+  "reddit": {
+    "name": "Reddit",
+    "url": "https://www.reddit.com/login",
+    "fields": {
+      "username": {
+        "selector": "#loginUsername",
+        "value": "${{reddit_username}}"
+      },
+      "password": {
+        "selector": "#loginPassword",
+        "value": "${{reddit_password}}"
+      }
+    },
+    "submit": {
+      "selector": "button[type='submit']"
+    },
+    "success": {
+      "urlContains": "reddit.com",
+      "notContains": "/login"
+    }
+  },
+  
+  "custom_example": {
+    "name": "Custom Website Example",
+    "description": "Template for adding your own website",
+    "url": "https://example.com/login",
+    "fields": {
+      "username": {
+        "selector": "input[name='email']",
+        "value": "${{example_username}}"
+      },
+      "password": {
+        "selector": "input[name='password']",
+        "value": "${{example_password}}"
+      },
+      "rememberMe": {
+        "selector": "input[type='checkbox']",
+        "value": "${{value:true}}",
+        "comment": "Use ${{value:...}} for non-sensitive values"
+      }
+    },
+    "submit": {
+      "selector": "button[type='submit']",
+      "wait": 2000
+    },
+    "success": {
+      "urlContains": "dashboard",
+      "comment": "Check URL contains this string after login"
+    }
+  }
+}

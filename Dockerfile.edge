@@ -1,0 +1,11 @@
+FROM ghcr.io/puppeteer/puppeteer:21.6.1
+
+EXPOSE 9222
+
+# google-chrome with proper flags for Docker container
+CMD ["google-chrome", \
+     "--headless=new", \
+     "--remote-debugging-port=9222", \
+     "--remote-debugging-address=0.0.0.0", \
+     "--no-sandbox", \
+     "--disable-gpu"]
